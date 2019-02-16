@@ -1,0 +1,23 @@
+#!/bin/bash
+sudo mount -o remount,size=128M /dev/shm
+
+echo -n performance | sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+echo -n "1-1.1:1.0" | sudo tee /sys/bus/usb/drivers/smsc95xx/unbind
+
+sudo service triggerhappy stop
+sudo service networking stop
+
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
+
+jackd -d alsa -d hw:0 &>/tmp/jackd.out &
+
+sleep 1
+
+fluidsynth --server --no-shell --audio-driver=jack \
+  --connect-jack-outputs --reverb=0 --chorus=0 --gain=0.8 \
+  /usr/share/sounds/sf2/FluidR3_GM.sf2 \
+  &>/tmp/fluidsynth.out &
+  
+sleep 10
+
+aconnect 20:0 128:0
