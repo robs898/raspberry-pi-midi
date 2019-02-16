@@ -2,7 +2,11 @@
 Play MIDI via raspberry pi
 
 ## Intro
-If like me you have a keyboard that only outputs MIDI (no headphone audio), you can use this guide to convert the keyboard MIDI output to sound via a raspberry pi.
+Do you have a keyboard that only outputs MIDI (no headphone audio)?
+
+Do you need a cheap/small MIDI converter?
+
+You can use this guide to convert the keyboard MIDI output to sound via a raspberry pi.
 
 Some example setups:
 ```
@@ -59,7 +63,7 @@ If you want it to auto run on boot of your pi:
 
 ## Troubleshooting
 - Switch audio to headphones from hdmi: https://www.raspberrypi.org/documentation/configuration/audio-config.md
-- Pulseaudio conflicts check Teds' MIDI guide in sources
+- Pulseaudio conflicts? Check Teds' MIDI guide in sources
 
 ## Sources
 - http://tedfelix.com/linux/linux-midi.html
